@@ -38,6 +38,7 @@ class EventsViewSet(viewsets.ModelViewSet):
 
     # insert data
     def create(self, request, *args, **kwargs):
+
         if self.template_name is None:
             self.template_name = self.app_name + '/' + self.app_name + '_form.html'
         serializer = self.get_serializer(data=request.data)
@@ -55,6 +56,10 @@ class EventsViewSet(viewsets.ModelViewSet):
             context = {'event': event}
             response = Response(context)
         return response
+
+    def perform_create(self, serializer):
+        print('create_perf')
+        serializer.save(created_by=self.request.user, modified_by=self.request.user)
 
     def update(self, request, *args, **kwargs):
         if self.template_name is None:
@@ -96,7 +101,6 @@ class EventsViewSet(viewsets.ModelViewSet):
         return query_set
 
     def post(self, request, *args, **kwargs):
-        print(request.data)
         if request.resolver_match.url_name == self.app_name + '-detail':
             if '_method' in request.data and request.data['_method'] == 'delete':
                 response = self.destroy(request, *args, **kwargs)
