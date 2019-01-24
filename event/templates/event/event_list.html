@@ -18,7 +18,7 @@
         <tbody>
             {% for event in results %}
             <tr>
-                <td>{{ event.name }}</td>
+                <td><a href="{% url 'event-detail' event.id %}">{{ event.name }}</a></td>
                 <td>{{ event.venue }}</td>
                 <td>{{ event.start_date }}</td>
                 <td>{{ event.end_date }}</td>

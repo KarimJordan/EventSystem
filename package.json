@@ -1,0 +1,25 @@
+{
+  "name": "eventsystem",
+  "version": "1.0.0",
+  "description": "simple event CRUD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "node_modules/.bin/webpack -w --progress",
+    "build": "node_modules/.bin/webpack -p -d --env production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarimJordan/EventSystem.git"
+  },
+  "author": "Karim Buenaseda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KarimJordan/EventSystem/issues"
+  },
+  "homepage": "https://github.com/KarimJordan/EventSystem#readme",
+  "dependencies": {
+    "vue": "^2.5.22",
+    "webpack": "^4.29.0"
+  }
+}

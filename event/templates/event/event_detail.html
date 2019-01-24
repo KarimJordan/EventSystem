@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Event Name: {{ event.name }}</title>
 </head>
 <body>
+<h1>Event: {{ event.name }}</h1>
 
+<div>
+    <label>Venue: </label>
+    <p>{{ event.venue }}</p>
+    <label>No. of Guest: </label>
+    <p>{{ event.guest }}</p>
+    <label>Starts at: </label>
+    <p>{{ event.start_date }}</p>
+    <label>Ends at: </label>
+    <p>{{ event.end_date }}</p>
+</div>
 </body>
 </html>
