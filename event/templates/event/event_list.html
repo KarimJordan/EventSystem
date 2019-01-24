@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Event</title>
 </head>
 <body>
-    {{ results }}
+    <table>
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Venue</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Guest</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in results %}
+            <tr>
+                <td>{{ event.name }}</td>
+                <td>{{ event.venue }}</td>
+                <td>{{ event.start_date }}</td>
+                <td>{{ event.end_date }}</td>
+                <td>{{ event.guest }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
