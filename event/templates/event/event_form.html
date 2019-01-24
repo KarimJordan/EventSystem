@@ -10,16 +10,16 @@
     <label>Event Name: </label>
     {% if event.name %}
         <input type="hidden" name="_method" value="update">
-        <input type="text" name="name" value="{{ event.name }}">
+        <input type="text" name="name" value="{{ event.name }}" required>
     {% else %}
-        <input type="text" name="name">
+        <input type="text" name="name" required>
     {% endif %}
     <br>
     <label>Venue: </label>
     {% if event.venue %}
-        <input type="text" name="venue" value="{{ event.venue }}">
+        <input type="text" name="venue" value="{{ event.venue }}" required>
     {% else %}
-        <input type="text" name="venue">
+        <input type="text" name="venue" required>
     {% endif %}
     <br>
     <label>No. Of Guest: </label>
