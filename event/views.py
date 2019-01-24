@@ -2,6 +2,8 @@ from rest_framework import viewsets, renderers, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
+from django.contrib.auth.models import User
+
 from django.shortcuts import render, redirect, reverse
 
 from .serializers import EventSerializer
@@ -62,7 +64,11 @@ class EventsViewSet(viewsets.ModelViewSet):
         return response
 
     def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user, modified_by=self.request.user)
+        if self.request.user.id is None:
+            temp_user = User.objects.get(pk=2)
+            serializer.save(created_by=temp_user, modified_by=temp_user)
+        else:
+            serializer.save(created_by=self.request.user, modified_by=self.request.user)
 
     def update(self, request, *args, **kwargs):
         if self.template_name is None:
@@ -96,6 +102,13 @@ class EventsViewSet(viewsets.ModelViewSet):
                 }
                 response = Response(context)
         return response
+
+    def perform_update(self, serializer):
+        if self.request.user.id is None:
+            temp_user = User.objects.get(pk=2)
+            serializer.save(modified_by=temp_user)
+        else:
+            serializer.save(modified_by=self.request.user)
 
     def get_queryset(self):
         query_set = super(EventsViewSet, self).get_queryset()

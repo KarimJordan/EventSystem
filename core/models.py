@@ -5,9 +5,11 @@ from django.contrib.auth.models import User
 # timestamped abstract model class
 class TimeStampedModel(models.Model):
     created = models.DateField(auto_now=True)
-    created_by = models.ForeignKey(User, on_delete=models.PROTECT, related_name="%(app_label)s_%(class)s_created_by")
+    created_by = models.ForeignKey(User, on_delete=models.PROTECT, related_name="%(app_label)s_%(class)s_created_by",
+                                   blank=True, null=True)
     modified = models.DateField(auto_now_add=True)
-    modified_by = models.ForeignKey(User, on_delete=models.PROTECT, related_name="%(app_label)s_%(class)s_modified_by")
+    modified_by = models.ForeignKey(User, on_delete=models.PROTECT, related_name="%(app_label)s_%(class)s_modified_by",
+                                    blank=True, null=True)
 
     class Meta:
         abstract = True

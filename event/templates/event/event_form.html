@@ -44,7 +44,11 @@
     {% endif %}
     <br>
     <button type="submit">SAVE</button>
-    <p><a href="{% url 'event-list' %}">CANCEL</a></p>
+    {% if event.name %}
+        <p><a href="{% url 'event-detail' event.id %}">CANCEL</a></p>
+    {% else %}
+        <p><a href="{% url 'event-list' %}">CANCEL</a></p>
+    {% endif %}
 </form>
 </body>
 </html>
