@@ -25,6 +25,10 @@ class EventsViewSet(viewsets.ModelViewSet):
         response = super(EventsViewSet, self).list(request, *args, **kwargs)
         return response
 
+    def destroy(self, request, *args, **kwargs):
+        super(EventsViewSet, self).destroy(request, *args, **kwargs)
+        return redirect('event-list')
+
     # returns the detailed info per event
     def retrieve(self, request, *args, **kwargs):
         if self.template_name is None:
@@ -58,7 +62,6 @@ class EventsViewSet(viewsets.ModelViewSet):
         return response
 
     def perform_create(self, serializer):
-        print('create_perf')
         serializer.save(created_by=self.request.user, modified_by=self.request.user)
 
     def update(self, request, *args, **kwargs):
@@ -101,13 +104,14 @@ class EventsViewSet(viewsets.ModelViewSet):
         return query_set
 
     def post(self, request, *args, **kwargs):
-        if request.resolver_match.url_name == self.app_name + '-detail':
-            if '_method' in request.data and request.data['_method'] == 'delete':
-                response = self.destroy(request, *args, **kwargs)
-            else:
-                response = self.update(request, *args, **kwargs)
+
+        if '_method' in request.data and request.data['_method'] == 'delete':
+            print('destroy')
+            response = self.destroy(request, *args, **kwargs)
+        elif '_method' in request.data and request.data['_method'] == 'update':
+            response = self.update(request, *args, **kwargs)
         else:
-            response = self.post(request, *args, **kwargs)
+            response = super(EventsViewSet, self).post(request, *args, **kwargs)
         return response
 
     def dispatch(self, request, *args, **kwargs):

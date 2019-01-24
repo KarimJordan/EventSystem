@@ -26,6 +26,7 @@
                 <td>
                     <form action="{% url 'event-detail' event.id %}" method="POST">
                         {% csrf_token %}
+                        <input type="hidden" name="_method" value="delete">
                         <button type="submit" value="delete">DELETE EVENT</button>
                     </form>
                 </td>
