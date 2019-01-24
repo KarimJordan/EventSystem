@@ -21,6 +21,7 @@
 <div>
     <form method="POST">
         {% csrf_token %}
+        <input type="hidden" name="_method" value="update">
         <button type="submit">Update Event</button>
     </form>
 </div>

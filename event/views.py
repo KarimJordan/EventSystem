@@ -104,9 +104,7 @@ class EventsViewSet(viewsets.ModelViewSet):
         return query_set
 
     def post(self, request, *args, **kwargs):
-
         if '_method' in request.data and request.data['_method'] == 'delete':
-            print('destroy')
             response = self.destroy(request, *args, **kwargs)
         elif '_method' in request.data and request.data['_method'] == 'update':
             response = self.update(request, *args, **kwargs)
