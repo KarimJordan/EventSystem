@@ -11,11 +11,20 @@
     <label>Venue: </label>
     <p>{{ event.venue }}</p>
     <label>No. of Guest: </label>
-    <p>{{ event.guest }}</p>
+    <p>{{ event.no_of_guest }}</p>
     <label>Starts at: </label>
     <p>{{ event.start_date }}</p>
     <label>Ends at: </label>
     <p>{{ event.end_date }}</p>
 </div>
+
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Update Event</button>
+    </form>
+</div>
+
+<p><a href="{% url 'event-list' %}">BACK TO EVENTS</a></p>
 </body>
 </html>

@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>SAMPLE</title>
 </head>
 <body>
-
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label>Event Name: </label><input type="text" name="name"><br>
+        <label>Venue: </label><input type="text" name="venue"><br>
+        <label>No. Of Guest: </label><input type="number" name="no_of_guest"><br>
+        <label>Start Date: </label><input type="date" name="start_date"><br>
+        <label>End Date: </label><input type="date" name="end_date"><br>
+        <button type="submit">SAVE</button>
+        <p><a href="{% url 'event-list' %}">CANCEL</a></p>
+    </form>
 </body>
 </html>

@@ -95,6 +95,17 @@ class EventsViewSet(viewsets.ModelViewSet):
             query_set = query_set.order_by('-end_date')
         return query_set
 
+    def post(self, request, *args, **kwargs):
+        print(request.data)
+        if request.resolver_match.url_name == self.app_name + '-detail':
+            if '_method' in request.data and request.data['_method'] == 'delete':
+                response = self.destroy(request, *args, **kwargs)
+            else:
+                response = self.update(request, *args, **kwargs)
+        else:
+            response = self.post(request, *args, **kwargs)
+        return response
+
     def dispatch(self, request, *args, **kwargs):
         if hasattr(request.resolver_match, 'namespaces'):
             if 'html' in request.resolver_match.namespaces:

@@ -22,10 +22,23 @@
                 <td>{{ event.venue }}</td>
                 <td>{{ event.start_date }}</td>
                 <td>{{ event.end_date }}</td>
-                <td>{{ event.guest }}</td>
+                <td>{{ event.no_of_guest }}</td>
+                <td>
+                    <form action="{% url 'event-detail' event.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" value="delete">DELETE EVENT</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Create New Event</button>
+        </form>
+    </div>
 </body>
 </html>
