@@ -9,6 +9,7 @@
     {% csrf_token %}
     <label>Event Name: </label>
     {% if event.name %}
+        <input type="hidden" name="_method" value="update">
         <input type="text" name="name" value="{{ event.name }}">
     {% else %}
         <input type="text" name="name">

@@ -87,7 +87,7 @@ class EventsViewSet(viewsets.ModelViewSet):
             if serializer.is_valid():
                 # if update or save is clicked then perform update on the item and redirect to event details
                 self.perform_update(serializer)
-                response = redirect(reverse('event-detail', kwargs['pk': kwargs['pk']]))
+                response = redirect(reverse('event-detail', kwargs={'pk': kwargs['pk']}))
             else:
                 # if data submitted is incorrect then it will redirect back to the form
                 event = serializer.data
@@ -104,6 +104,7 @@ class EventsViewSet(viewsets.ModelViewSet):
         return query_set
 
     def post(self, request, *args, **kwargs):
+        # CRUD functions but only for POST method.
         if '_method' in request.data and request.data['_method'] == 'delete':
             response = self.destroy(request, *args, **kwargs)
         elif '_method' in request.data and request.data['_method'] == 'update':
@@ -111,12 +112,6 @@ class EventsViewSet(viewsets.ModelViewSet):
         else:
             response = super(EventsViewSet, self).post(request, *args, **kwargs)
         return response
-
-    def dispatch(self, request, *args, **kwargs):
-        if hasattr(request.resolver_match, 'namespaces'):
-            if 'html' in request.resolver_match.namespaces:
-                self.html = True
-            return super(EventsViewSet, self).dispatch(request, *args, **kwargs)
 
     # override default renderer to HTMLRenderer()
     # can be configured to use either JSONRenderer() or TemplateHTMLRenderer()
