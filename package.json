@@ -19,6 +19,14 @@
   },
   "homepage": "https://github.com/KarimJordan/EventSystem#readme",
   "dependencies": {
+    "axios": "^0.18.0",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.5",
+    "bootstrap": "^4.2.1",
+    "bootstrap-vue": "^2.0.0-rc.11",
+    "css-loader": "^2.1.0",
+    "loadash": "^1.0.0",
+    "sass-loader": "^7.1.0",
     "vue": "^2.5.22",
     "webpack": "^4.29.0"
   }
