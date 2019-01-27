@@ -71,3 +71,4 @@ MANIFEST
 *.iml
 .idea/misc.xml
 static/admin/css/autocomplete.css
+*.iml

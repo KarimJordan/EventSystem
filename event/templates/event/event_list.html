@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load rest_framework %}
 {% load staticfiles %}
 {% load extra_tags %}
 
@@ -6,7 +7,6 @@
     <script>
 {#        var events =#}
 {#        {{ results|jsonify }}#}
-
     </script>
 {% endblock %}
 
@@ -17,8 +17,6 @@
 {%  block content %}
     <event-list></event-list>
 {% endblock %}
-
-
 
 {#<!DOCTYPE html>#}
 {#<html lang="en">#}
@@ -68,7 +66,7 @@
 {#</div>#}
 
 {% block scripts_end %}
-    <script src="{% static "compiled/js/main.js" %}"></script>
-{% endblock %}
+    <script src="{% static "compiled/js/event.js" %}"></script>
+{% endblock scripts_end %}
 </body>
 </html>
