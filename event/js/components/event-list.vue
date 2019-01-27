@@ -14,7 +14,7 @@
                 </thead>
                 <tbody>
                 <tr scope="row" v-for="event in events">
-                    <td><a :href="event.id + '/'">{{event.name}}</a></td>
+                    <td><a :href="'events/' + event.id + '/'">{{event.name}}</a></td>
                     <td>{{event.venue}}</td>
                     <td>{{event.start_date}}</td>
                     <td>{{event.end_date}}</td>
@@ -39,6 +39,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </template>
 <script type="text/babel">

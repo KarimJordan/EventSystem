@@ -25,7 +25,8 @@ SECRET_KEY = 'q($t7(7avne2(tfksgq-9wnb3%q=v^o)fxb!$1u6r1*pxum)p='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Temporary allow all hosts
+ALLOWED_HOSTS = ['35.247.153.244', '*']
 
 # Application definition
 

@@ -16,7 +16,9 @@ router = routers.SimpleRouter()
 router.register(r'events', EventsViewSet)
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
+    url(r'^$', EventsViewSet.as_view({'get': 'list'})),
     url(r'^', include(router.urls)),
 ]
 
