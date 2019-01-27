@@ -19,25 +19,23 @@
 
             <h4 class="mb-3">
                 <span class="text-muted">Event: Name: </span>{{event.name}}</h4>
-            <div>
 
-                <div class="col-md-6">
-                    <label>Venue</label>
-                    <p>{{event.venue}}</p>
-                </div>
-
-                <div class="col-md-3">
-                    <label>Start Date</label>
-                    <p>{{event.start_date}}</p>
-                </div>
-
-                <div class="col-md-3">
-                    <label>End Date</label>
-                    <p>{{event.end_date}}</p>
-                </div>
-
-            </div>
-
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Venue</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p>{{event.venue}}</p></td>
+                        <td><p>{{event.start_date}}</p></td>
+                        <td><p>{{event.end_date}}</p></td>
+                    </tr>
+                </tbody>
+            </table>
 
         </div>
 

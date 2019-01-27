@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="col-sm-12">
+        <div class="col-md-8 order-md-1">
             <table class="table table-striped">
                 <thead>
                 <tr class="table-active">
@@ -29,13 +29,14 @@
                 </tr>
                 </tbody>
             </table>
-        </div>
-        <div class="row">
-            <div class="col-md-4 pb-2">
-                <form method="post">
-                    <input type="hidden" name="csrfmiddlewaretoken" :value="csrf">
-                    <button type="submit" class="btn-primary">Create Event</button>
-                </form>
+
+            <div class="row">
+                <div class="col-md-4 pb-2">
+                    <form method="post">
+                        <input type="hidden" name="csrfmiddlewaretoken" :value="csrf">
+                        <button type="submit" class="btn-primary">Create Event</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

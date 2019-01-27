@@ -1,54 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>SAMPLE</title>
-</head>
-<body>
-<form method="POST">
-    {% csrf_token %}
-    <label>Event Name: </label>
-    {% if event.name %}
-        <input type="hidden" name="_method" value="update">
-        <input type="text" name="name" value="{{ event.name }}" required>
-    {% else %}
-        <input type="text" name="name" required>
-    {% endif %}
-    <br>
-    <label>Venue: </label>
-    {% if event.venue %}
-        <input type="text" name="venue" value="{{ event.venue }}" required>
-    {% else %}
-        <input type="text" name="venue" required>
-    {% endif %}
-    <br>
-    <label>No. Of Guest: </label>
-    {% if event.no_of_guest %}
-        <input type="number" name="no_of_guest" value="{{ event.no_of_guest }}">
-    {% else %}
-        <input type="number" name="no_of_guest">
-    {% endif %}
-    <br>
-    <label>Start Date: </label>
-    {% if event.start_date %}
-        <input type="date" name="start_date" value="{{ event.start_date }}">
-    {% else %}
-        <input type="date" name="start_date">
-    {% endif %}
-    <br>
-    <label>End Date: </label>
-    {% if event.end_date %}
-        <input type="date" name="end_date" value="{{ event.end_date }}">
-    {% else %}
-        <input type="date" name="end_date">
-    {% endif %}
-    <br>
-    <button type="submit">SAVE</button>
-    {% if event.name %}
-        <p><a href="{% url 'event-detail' event.id %}">CANCEL</a></p>
-    {% else %}
-        <p><a href="{% url 'event-list' %}">CANCEL</a></p>
-    {% endif %}
-</form>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load rest_framework %}
+{% load staticfiles %}
+{% load extra_tags %}
+
+{% block script_start %}
+    <script>
+        var event = {{ event|jsonify }};
+        var csrf = "{{ csrf_token }}";
+    </script>
+{% endblock script_start %}
+
+{% block title %}
+    Form
+{% endblock %}
+
+
+{% block content %}
+    <event-form></event-form>
+{% endblock %}
+
+{% block scripts_end %}
+    <script src="{% static "compiled/js/event.js" %}"></script>
+{% endblock scripts_end %}
+
+
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>SAMPLE</title>#}
+{#</head>#}
+{#<body>#}
+{#<form method="POST">#}
+{#    {% csrf_token %}#}
+{#    <label>Event Name: </label>#}
+{#    {% if event.name %}#}
+{#        <input type="hidden" name="_method" value="update">#}
+{#        <input type="text" name="name" value="{{ event.name }}" required>#}
+{#    {% else %}#}
+{#        <input type="text" name="name" required>#}
+{#    {% endif %}#}
+{#    <br>#}
+{#    <label>Venue: </label>#}
+{#    {% if event.venue %}#}
+{#        <input type="text" name="venue" value="{{ event.venue }}" required>#}
+{#    {% else %}#}
+{#        <input type="text" name="venue" required>#}
+{#    {% endif %}#}
+{#    <br>#}
+{#    <label>No. Of Guest: </label>#}
+{#    {% if event.no_of_guest %}#}
+{#        <input type="number" name="no_of_guest" value="{{ event.no_of_guest }}">#}
+{#    {% else %}#}
+{#        <input type="number" name="no_of_guest">#}
+{#    {% endif %}#}
+{#    <br>#}
+{#    <label>Start Date: </label>#}
+{#    {% if event.start_date %}#}
+{#        <input type="date" name="start_date" value="{{ event.start_date }}">#}
+{#    {% else %}#}
+{#        <input type="date" name="start_date">#}
+{#    {% endif %}#}
+{#    <br>#}
+{#    <label>End Date: </label>#}
+{#    {% if event.end_date %}#}
+{#        <input type="date" name="end_date" value="{{ event.end_date }}">#}
+{#    {% else %}#}
+{#        <input type="date" name="end_date">#}
+{#    {% endif %}#}
+{#    <br>#}
+{#    <button type="submit">SAVE</button>#}
+{#    {% if event.name %}#}
+{#        <p><a href="{% url 'event-detail' event.id %}">CANCEL</a></p>#}
+{#    {% else %}#}
+{#        <p><a href="{% url 'event-list' %}">CANCEL</a></p>#}
+{#    {% endif %}#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
