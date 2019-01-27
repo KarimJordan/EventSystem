@@ -1,9 +1,12 @@
 const webpack = require("webpack")
 const path = require("path")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const MinCssExtractPlugin = require("mini-css-extract-plugin")
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-    entry : {
+    entry: {
+        core: path.resolve('./core/js/main.js'),
         event: path.resolve('./event/js/main.js')
     },
 
@@ -13,25 +16,36 @@ module.exports = {
         filename: "./[name]/static/compiled/js/[name].js"
     },
 
+    plugins: [
+        new VueLoaderPlugin(),
+        new MinCssExtractPlugin({
+            filename: "./[name]/static/compiled/css/[name].css",
+            chunkFilename: "./[id]/static/compiled/css/[id].css"
+        })
+    ],
+
     // contains loaders,
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    use: ['css-loader', 'style-loader']
-                })
-            },
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
+                use: [
+                    MinCssExtractPlugin.loader,
+                    "css-loader"
+                ]
             },
             {
                 test: /\.vue$/,
-                loader: 'vue-loader',
+                loader: 'vue-loader'
+            },
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                }
             }
-        ]
+        ],
     },
 
     resolve: {
@@ -39,7 +53,5 @@ module.exports = {
         alias: {
             'vue': 'vue/dist/vue.common.js'
         },
-        // alias: {'vue$': 'vue/dist/vue.esm.js'},
-        // extensions: ['.js', '.vue'], // this string resolve your problem
     }
 }

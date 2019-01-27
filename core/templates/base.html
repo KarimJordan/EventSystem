@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Management &middot; {% block title %}{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'compiled/css/main.css' %}">
+    {% block script_start %}{% endblock %}
+</head>
+<body>
+    <main id="body">
+        {% block content %}{% endblock content %}
+    </main>
+    <script src="{% static "compiled/js/main.js" %}"></script>
+    {% block scripts_end %}{% endblock %}
+</body>
+</html>

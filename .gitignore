@@ -20,6 +20,14 @@ migrations/
 node_modules/
 compiled/
 
+.idea/EventSystem.iml
+.idea/misc.xml
+
+static/
+static/admin/
+EventSystem/static/
+EventSystem/event/static/
+
 ### Django ###
 *.log
 *.pot
@@ -56,3 +64,6 @@ wheels/
 *.egg
 MANIFEST
 
+*.iml
+.idea/misc.xml
+static/admin/css/autocomplete.css
