@@ -1,31 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Event Name: {{ event.name }}</title>
-</head>
-<body>
-<h1>Event: {{ event.name }}</h1>
+{% extends 'base.html' %}
+{% load rest_framework %}
+{% load staticfiles %}
+{% load extra_tags %}
 
-<div>
-    <label>Venue: </label>
-    <p>{{ event.venue }}</p>
-    <label>No. of Guest: </label>
-    <p>{{ event.no_of_guest }}</p>
-    <label>Starts at: </label>
-    <p>{{ event.start_date }}</p>
-    <label>Ends at: </label>
-    <p>{{ event.end_date }}</p>
-</div>
+{% block script_start %}
+    <script>
+        var event = {{ event|jsonify }};
+        var csrf = "{{ csrf_token }}";
+    </script>
+{% endblock %}
 
-<div>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="hidden" name="_method" value="update">
-        <button type="submit">Update Event</button>
-    </form>
-</div>
+{% block title %}
+    {{ event.name }}
+{% endblock %}
 
-<p><a href="{% url 'event-list' %}">BACK TO EVENTS</a></p>
-</body>
-</html>
+{% block content %}
+    <event-detail></event-detail>
+{% endblock %}
+
+{% block scripts_end %}
+    <script src="{% static "compiled/js/event.js" %}"></script>
+{% endblock scripts_end %}

@@ -2,7 +2,7 @@
     <div>
         <div class="col-sm-12">
             <table class="table table-striped">
-                <thead class="thead-dark">
+                <thead>
                 <tr class="table-active">
                     <th scope="col">Event Name</th>
                     <th scope="col">Venue</th>
