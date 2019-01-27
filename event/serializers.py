@@ -8,4 +8,4 @@ from core.serializers import CoreModelSerializer
 class EventSerializer(CoreModelSerializer):
     class Meta:
         model = Event
-        fields = '__all__'
+        fields = ('id', 'name', 'venue', 'no_of_guest', 'start_date', 'end_date')

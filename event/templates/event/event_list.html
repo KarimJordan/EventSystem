@@ -5,8 +5,8 @@
 
 {% block script_start %}
     <script>
-{#        var events =#}
-{#        {{ results|jsonify }}#}
+        var events = {{ results|jsonify }};
+        var csrf = "{{ csrf_token }}";
     </script>
 {% endblock %}
 
@@ -17,53 +17,6 @@
 {%  block content %}
     <event-list></event-list>
 {% endblock %}
-
-{#<!DOCTYPE html>#}
-{#<html lang="en">#}
-{#<head>#}
-{#    <meta charset="UTF-8">#}
-{#    <title>Event</title>#}
-{##}
-{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">#}
-{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">#}
-{#</head>#}
-{#<body>#}
-{#<table>#}
-{#    <thead>#}
-{#    <tr>#}
-{#        <th>Event Name</th>#}
-{#        <th>Venue</th>#}
-{#        <th>Start Date</th>#}
-{#        <th>End Date</th>#}
-{#        <th>Guest</th>#}
-{#    </tr>#}
-{#    </thead>#}
-{#    <tbody>#}
-{#    {% for event in results %}#}
-{#        <tr>#}
-{#            <td><a href="{% url 'event-detail' event.id %}">{{ event.name }}</a></td>#}
-{#            <td>{{ event.venue }}</td>#}
-{#            <td>{{ event.start_date }}</td>#}
-{#            <td>{{ event.end_date }}</td>#}
-{#            <td>{{ event.no_of_guest }}</td>#}
-{#            <td>#}
-{#                <form action="{% url 'event-detail' event.id %}" method="POST">#}
-{#                    {% csrf_token %}#}
-{#                    <input type="hidden" name="_method" value="delete">#}
-{#                    <button type="submit" value="delete">DELETE EVENT</button>#}
-{#                </form>#}
-{#            </td>#}
-{#        </tr>#}
-{#    {% endfor %}#}
-{#    </tbody>#}
-{#</table>#}
-{##}
-{#<div>#}
-{#    <form method="POST">#}
-{#        {% csrf_token %}#}
-{#        <button type="submit">Create New Event</button>#}
-{#    </form>#}
-{#</div>#}
 
 {% block scripts_end %}
     <script src="{% static "compiled/js/event.js" %}"></script>

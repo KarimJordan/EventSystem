@@ -118,6 +118,7 @@ class EventsViewSet(viewsets.ModelViewSet):
 
     def post(self, request, *args, **kwargs):
         # CRUD functions but only for POST method.
+
         if '_method' in request.data and request.data['_method'] == 'delete':
             response = self.destroy(request, *args, **kwargs)
         elif '_method' in request.data and request.data['_method'] == 'update':
