@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import React from 'react'
+
 
 // import all the vue components and consolidate it under one main.js which is to be compiled/repacked by webpack.
 import eventList from './components/event-list.vue'
